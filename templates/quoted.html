@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <div class="section">
+        <h1>Stock Quote</h1>
+        <p style="margin-left: 100px; margin-right: 100px; font-size: large;">
+            Click on the buy button to buy stock
+        </p>
+        <div style="margin-left: 250px; margin-right: 250px;">
+            <table class="table">
+                <thead class="table-success">
+                    <tr>
+                        <th>Stock Symbol</th>
+                        <th>Stock Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ stock.symbol }}</td>
+                        <td>{{ stock.price | usd }}td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <form  action="/buy" method="GET">
+            <input name="symbol" type="hidden" value="{{ stock.symbol }}">
+            <input class="btn btn-primary btn-lg" style="width: 150px" type="submit" value="Buy">
+        </form>
+    </div>
+{% endblock %}

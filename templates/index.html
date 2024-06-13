@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+<div class="section">
+    <h1 style="font-weight: bold">{{ username }}'s Portfolio</h1>
+    <p style="margin-left: 100px; margin-right: 100px; font-size: 25px;">
+        A comprehensive summary of your current investments at a glance
+    </p>
+    <div>
+        <table class="table">
+            <thead class="table-success">
+                <tr>
+                    <th>Stock</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if portfolio %}
+                {% for stock in portfolio %}
+                    <tr>
+                        <td>{{ stock.symbol }}</td>
+                        <td>{{ stock.shares }}</td>
+                        <td>{{ stock.price | usd }}</td>
+                        <td>{{ stock.value | usd }}</td>
+                        <td>
+                            <form  action="/sell" method="GET">
+                                <input name="symbol" type="hidden" value="{{ stock.symbol }}">
+                                <input class="btn btn-primary btn-lg" style="width: 100px" type="submit" value="Sell">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                        <p style="font-size: 20px;">You do not have any stock yet. Click <a href="/quote">here</a> to get a quote </p>
+                    {% endif %}
+                    <tr>
+                        <td><p>Total Stock Value: {{ stock_value | usd }}</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Cash balance: {{ cash | usd }}</p></td>
+                        <td>
+                            <form action="add_cash">
+                                <input class="btn btn-primary btn-lg" style="width: 150px" type="submit" value="Add Cash" >
+                            </form>
+                        </td>
+                    </tr>
+                        <td><p>Grand Total: {{ grand_total | usd }}</p><hr></td>
+            </tbody>
+        </table>
+    </div>
+    <p>
+        If you're just starting out in finance,
+        Here are examples of stocks you can purchase: AAPL, MSFT, AMZN, TSLA and WMT.
+    </p>
+</div>
+{% endblock %}

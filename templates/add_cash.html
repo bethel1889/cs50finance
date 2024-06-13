@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Cash
+{% endblock %}
+
+{% block main %}
+    <h1>Get more Cash</h1>
+    <p style="margin-left: 100px; margin-right: 100px; font-size: large;">
+        Enter the amount of cash you wish to obtain
+    </p>
+    <form action="/add_cash" method="POST" >
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="col-md-3 mb-3">
+                    <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="extra" placeholder="Enter Amount" type="number" required min="100">
+                </div>
+                <div>
+                    <input class="btn btn-primary" type="submit" value="Get Cash">
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

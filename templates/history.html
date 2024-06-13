@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Saved Jobs
+{% endblock %}
+
+{% block main %}
+<div class="section">
+    <h1 style="font-weight: bold">{{ username }}'s History</h1>
+    <p style="margin-left: 150px; margin-right: 150px; font-size: 25px;">
+        Review your financial activity and gain insight.
+    </p>
+    <div style="margin-left: 50px; margin-right: 50px;">
+        <table class="table">
+            <thead class="table-success">
+                <tr>
+                    <th>Stock</th>
+                    <th>Transaction</th>
+                    <th>Shares</th>
+                    <th>Price per Share</th>
+                    <th>Time Stamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in history %}
+                    <tr>
+                        <td>{{ order.order_type }}</td>
+                        <td>{{ order.symbol }}</td>
+                        <td>{{ order.shares }}</td>
+                        <td>{{ order.price }}</td>
+                        <td>{{ order.time_stamp }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+

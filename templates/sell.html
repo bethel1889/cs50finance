@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <h1>Sell Stock</h1>
+    <p style="margin-left: 100px; margin-right: 100px; font-size: large;">
+        Enter the stock symbol and shares below and Click on the Sell button
+    </p>
+    <form action="/sell" method="POST" >
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="col-md-3 mb-3">
+                    <select autofocus class="form-select mx-auto w-auto" name="symbol" required>
+                        <option value="symbol" disabled selected> Symbol</option>
+                        {% for symbol in symbols %}
+                        <option value="{{ symbol.symbol }}">{{ symbol.symbol }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-mb-3">
+                    <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="shares" placeholder="Number of shares" type="number" min="1" required>
+                </div>
+                <div class="col- mb-3">
+                    <input type="hidden" id="date_field" name="time_stamp" value="">
+                    <button class="btn btn-primary" type="submit" style="width: 100px" id="buy_button">Sell</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <h1>Buy Stock</h1>
+    <p style="margin-left: 100px; margin-right: 100px; font-size: large;">
+        Enter your desired stock and the share quantity below and Click on the buy button
+    </p>
+    <form action="/buy" method="POST" >
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="col-md-4 mb-3">
+                    <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="symbol" placeholder="Stock symbol" type="text" value="{{ stock_sym }}" required>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="shares" placeholder="Number of shares" type="number" required min="1">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <input type="hidden" id="date_field" name="time_stamp" value="">
+                    <button class="btn btn-primary" type="submit" style="width: 100px" id="buy_button">Buy</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

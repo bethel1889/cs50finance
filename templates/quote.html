@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <h1>Get instant Stock Quotes</h1>
+    <p style="margin-left: 100px; margin-right: 100px; font-size: 25px;;">
+        Enter the stock symbol and click on the 'Quote' button to search for stock quotes
+    </p>
+    <form action="/quote" method="POST">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="symbol" placeholder="Stock symbol" type="text" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Get Quote</button>
+    </form>
+    <p>
+        If you're just starting out in finance,
+        Here are examples of stocks you can purchase: AAPL, MSFT, AMZN, TSLA and WMT.
+    </p>
+{% endblock %}
